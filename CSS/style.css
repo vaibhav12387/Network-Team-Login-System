@@ -1,0 +1,105 @@
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background: #f0f0f0; /* Light gray background */
+            font-family: 'Roboto', sans-serif;
+            color: #333; /* Dark gray text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .announcement {
+            background-color: #6a11cb; /* Purple background */
+            color: #fff; /* White text */
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        .login-container, .registration-container {
+            max-width: 400px;
+            background: #fff; /* White background */
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        .show-form {
+            color: #6a11cb; /* Purple text */
+            cursor: pointer;
+        }
+
+        .show-form:hover {
+            color: #2575fc; /* Light blue on hover */
+        }
+
+        .btn-primary {
+            background-color: #6a11cb; /* Purple button */
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2575fc; /* Light blue on hover */
+        }
+
+        .custom-input {
+            background: #f0f0f0; /* Light gray input background */
+            border: 1px solid #ccc; /* Light gray border */
+            color: #333; /* Dark gray text */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-input:focus {
+            background: #fff; /* White background on focus */
+            border-color: #6a11cb; /* Purple border on focus */
+            outline: none;
+            color: #333; /* Dark gray text */
+        }
+
+        input::placeholder {
+            color: #bbb; /* Light gray placeholder text */
+        }
+
+        .form-group label {
+            color: #333; /* Dark gray label text */
+        }
+
+        .form-check-label {
+            color: #333; /* Dark gray check label text */
+        }
+
+        .login-btn, .login-register {
+            margin-top: 20px;
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff; /* White text inside modal */
+        }
+
+        .modal-header, .modal-footer {
+            border: none;
+        }
+
+        .modal-title {
+            color: #fff; /* White modal title */
+        }

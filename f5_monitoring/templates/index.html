@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F5 Monitoring Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+        .container {
+            margin-top: 50px;
+            overflow-x: auto; /* Ensure horizontal scrolling if table overflows */
+            margin: 0 auto; /* Center the table horizontally */
+            max-width: 100%; /* Ensure the container doesn't exceed the viewport width */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        .table {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            table-layout: auto;
+            width: 100%;
+            margin: 0 auto;
+        }
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+        th, td {
+            text-align: center;
+            padding: 15px;
+            min-width: 150px;
+            word-wrap: break-word;
+        }
+        tr {
+            transition: transform 0.2s;
+        }
+        tr:hover {
+            transform: scale(1.02);
+            background-color: #f1f1f1;
+        }
+        td {
+            background-color: #fff;
+        }
+        th {
+            font-weight: bold;
+        }
+        .failover {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>F5 Monitoring Dashboard</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Device Name</th>
+                    <th>IP Address</th>
+                    <th>HA Group</th>
+                    <th>MAC Address</th>
+                    <th>Software Version</th>
+                    <th>Software Build</th>
+                    <th>Serial Number</th>
+                    <th>Model Name</th>
+                    <th>Model Type</th>
+                    <th>Status</th>
+                    <th>Alert</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for device in devices %}
+                <tr>
+                    <td>{{ device.name }}</td>
+                    <td>{{ device.managementIp }}</td>
+                    <td>{{ device.group }}</td>
+                    <td>{{ device.baseMac }}</td>
+                    <td>{{ device.version }}</td>
+                    <td>{{ device.build }}</td>
+                    <td>{{ device.chassisId }}</td>
+                    <td>{{ device.marketingName }}</td>
+                    <td>{{ device.platformId }}</td>
+                    <td class="{% if device.status_changed %}failover{% endif %}">
+                        {{ device.failoverState }}
+                    </td>
+                    <td>
+                        {% if device.status_changed %}
+                            Status changed from {{ device.previous_status }} to {{ device.failoverState }}
+                        {% else %}
+                            No issue
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
